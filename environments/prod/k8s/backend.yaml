@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: eshop-backend
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: eshop-backend
@@ -24,7 +25,7 @@ spec:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://postgres:5432/eshop_db"
             - name: SPRING_RABBITMQ_HOST
-              value: rabbitmq
+              value: rabbitmq.default.svc.cluster.local
           resources:
             requests:
               cpu: 500m
